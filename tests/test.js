@@ -47,7 +47,7 @@ describe('Encoding', function() {
 
     var jisx0208 = fs.readFileSync(__dirname + '/jis-x-0208-utf8.txt');
     var jisx0208Len = jisx0208.length + 1;
-    tests.jisx0208 = new Buffer(jisx0208Len);
+    tests.jisx0208 = Buffer.alloc(jisx0208Len);
     // Prepend an ascii character for UTF-16 detection.
     tests.jisx0208[0] = 'a'.charCodeAt(0);
     for (i = 1; i < jisx0208Len; i++) {
@@ -982,7 +982,7 @@ describe('Encoding', function() {
       assert(encoded.length === 2);
       assert(Array.isArray(encoded));
 
-      var buffer = new Buffer(0);
+      var buffer = Buffer.alloc(0);
       encoded = encoding.convert(buffer, {
         to: 'utf-8',
         from: 'unicode',
@@ -991,7 +991,7 @@ describe('Encoding', function() {
       assert(encoded.length === 0);
       assert(Array.isArray(encoded));
 
-      buffer = new Buffer(2);
+      buffer = Buffer.alloc(2);
       buffer[0] = 0x61;
       buffer[1] = 0x62;
       encoded = encoding.convert(buffer, {
@@ -1072,7 +1072,7 @@ describe('Encoding', function() {
       assert(encoded.length === 2);
       assert(isTypedArray(encoded));
 
-      var buffer = new Buffer(0);
+      var buffer = Buffer.alloc(0);
       encoded = encoding.convert(buffer, {
         to: 'utf-8',
         from: 'unicode',
@@ -1081,7 +1081,7 @@ describe('Encoding', function() {
       assert(encoded.length === 0);
       assert(isTypedArray(encoded));
 
-      buffer = new Buffer(2);
+      buffer = Buffer.alloc(2);
       buffer[0] = 0x61;
       buffer[1] = 0x62;
       encoded = encoding.convert(buffer, {
@@ -1162,7 +1162,7 @@ describe('Encoding', function() {
       assert(encoded.length === 2);
       assert(isString(encoded));
 
-      var buffer = new Buffer(0);
+      var buffer = Buffer.alloc(0);
       encoded = encoding.convert(buffer, {
         to: 'utf-8',
         from: 'unicode',
@@ -1171,7 +1171,7 @@ describe('Encoding', function() {
       assert(encoded.length === 0);
       assert(isString(encoded));
 
-      buffer = new Buffer(2);
+      buffer = Buffer.alloc(2);
       buffer[0] = 0x61;
       buffer[1] = 0x62;
       encoded = encoding.convert(buffer, {
